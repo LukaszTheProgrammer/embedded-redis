@@ -35,14 +35,26 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+    <repositories>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <!-- Convenient nexus-group of 3 repositories: central, snapshots, releases -->
+            <id>public</id>
+            <url>https://repo.corp.videolicious.com/repository/maven-public</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <url>https://repo.corp.videolicious.com/repository/maven-public</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <name>Videolicious Nexus</name>
+            <url>https://repo.corp.videolicious.com/repository/maven-releases</url>
         </repository>
     </distributionManagement>
 
@@ -91,6 +103,11 @@
             <artifactId>spring-data-redis</artifactId>
             <version>1.4.1.RELEASE</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
         </dependency>
 
     </dependencies>
