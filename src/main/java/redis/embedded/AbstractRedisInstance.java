@@ -93,6 +93,12 @@ abstract class AbstractRedisInstance implements Redis {
             redisProcess.destroy();
             tryWaitFor();
             active = false;
+            try {
+                Thread.sleep(1000);
+                logger.info("Waiting for redis to stop");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
